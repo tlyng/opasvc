@@ -10,8 +10,6 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/open-policy-agent/opa/util"
-
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
 
@@ -19,6 +17,7 @@ import (
 	"github.com/open-policy-agent/opa/rego"
 	"github.com/open-policy-agent/opa/storage"
 	"github.com/open-policy-agent/opa/storage/inmem"
+	"github.com/open-policy-agent/opa/util"
 )
 
 const policy = `package poc.opasvc.Hello
@@ -35,6 +34,11 @@ is_welcome(name) {
 
 Say {
 	is_welcome(input.name)
+}
+
+Say {
+	lower(input.greeting, greeting)
+	startswith(greeting, "super")
 }
 `
 

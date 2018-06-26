@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package poc.opasvc;
+option go_package = "github.com/tlyng/opasvc/pb";
+
+service Hello {
+    rpc Say(Request) returns (Response);
+}
+
+message Request {
+    string name = 1;
+    string greeting = 2;
+}
+
+message Response {
+    string message = 1;
+}

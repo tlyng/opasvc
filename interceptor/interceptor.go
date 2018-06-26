@@ -22,8 +22,6 @@ import (
 
 const policy = `package poc.opasvc.Hello
 
-default Say = false
-
 allowed_names = ["leonardo", "donatello", "raphael", "michaelangelo"]
 
 is_welcome(name) {
@@ -31,6 +29,8 @@ is_welcome(name) {
 	lower(input.name, name_lower)
 	allowed_lower = name_lower
 }
+
+default Say = false
 
 Say {
 	is_welcome(input.name)
